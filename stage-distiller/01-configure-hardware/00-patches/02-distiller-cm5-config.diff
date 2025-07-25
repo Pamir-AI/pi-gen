@@ -1,0 +1,36 @@
+--- stage2.orig/rootfs/boot/firmware/config.txt
++++ stage2/rootfs/boot/firmware/config.txt
+@@ -55,3 +55,33 @@ dtoverlay=pamir-ai-sam
+ dtoverlay=pamir-ai-soundcard
+ dtparam=i2c_arm=on
+ dtparam=i2s=on
++
++# Enable eink display on SPI0
++dtoverlay=spi0-1cs,cs0_pin=8
++
++# Enable UART for console output
++enable_uart=1
++
++# Enable EEPROM based PWM cooling fan for CM5
++dtparam=cooling_fan=on
++
++# Cooling Fan Configuration
++dtparam=fan_temp0=35000      # First cooling level (35°C)
++dtparam=fan_temp0_hyst=2000  # Hysteresis (2°C)
++dtparam=fan_temp0_speed=80   # Fan speed (0-255)
++dtparam=fan_temp1=45000      # Second cooling level (45°C)
++dtparam=fan_temp1_hyst=2000  # Hysteresis (2°C)
++dtparam=fan_temp1_speed=140  # Second fan speed (0-255)
++dtparam=fan_temp2=55000      # Third cooling level (55°C)
++dtparam=fan_temp2_hyst=2000  # Hysteresis (2°C)
++dtparam=fan_temp2_speed=200  # Third fan speed (0-255)
++dtparam=fan_temp3=65000      # Fourth cooling level (65°C)
++dtparam=fan_temp3_hyst=2000  # Hysteresis (2°C)
++dtparam=fan_temp3_speed=255  # Fourth fan speed (0-255)
++
++# undervolt the cm5
++over_voltage=-3
++
++# Disable HDMI output and blank the screen
++dtoverlay=disable-hdmi
++hdmi_blanking=1

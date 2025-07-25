@@ -1,0 +1,9 @@
+# Dependencies for Distiller prod packages
+
+network-manager
+avahi-daemon
+openssh-client
+nodejs
+npm
+tmux
+lsof
