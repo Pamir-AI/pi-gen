@@ -1,0 +1,48 @@
+# Distiller CM5 Platform Configuration for pi-gen
+# This config builds a Raspberry Pi OS image with the complete Distiller CM5 platform integrated
+
+# Basic image configuration
+IMG_NAME='distiller-PROD'
+PI_GEN_RELEASE='Distiller by PamirAI'
+
+# Use bookworm as base (default)
+RELEASE='bookworm'
+
+# Enable SSH by default for development/management
+ENABLE_SSH=1
+
+# Set default user credentials for development (change for production)
+FIRST_USER_NAME='distiller'
+FIRST_USER_PASS='one'
+
+# Disable first boot user rename since we want a consistent username
+DISABLE_FIRST_BOOT_USER_RENAME=1
+
+# Timezone and locale settings
+TIMEZONE_DEFAULT='America/New_York'
+LOCALE_DEFAULT='en_US.UTF-8'
+KEYBOARD_KEYMAP='us'
+KEYBOARD_LAYOUT='English (US)'
+
+# WiFi country code (required for WiFi functionality)
+WPA_COUNTRY='US'
+
+# Hostname for the device
+TARGET_HOSTNAME='distiller-prod'
+
+# Deployment settings
+DEPLOY_COMPRESSION='xz'
+# COMPRESSION_LEVEL=9
+XZ_OPT='-T0'
+
+# Architecture (arm64)
+ARCH='arm64'
+
+# Include all stages
+STAGE_LIST="stage0 stage1 stage2 stage-distiller stage-prod"
+
+# Optional: Add additional temporary repo if needed
+# TEMP_REPO="deb http://example.com/repo RELEASE main"
+
+# Optional: Set APT proxy if available
+# APT_PROXY="http://192.168.1.100:3142" 

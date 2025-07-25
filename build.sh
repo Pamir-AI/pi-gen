@@ -1,6 +1,22 @@
 #!/bin/bash -e
 
 # shellcheck disable=SC2119
+check_kernel_version()
+{
+	if [ -z "${DKMS_VERSIONS}" ]
+	then
+		if [ 0 -lt `find ${ROOTFS_DIR}/usr/src -name linux-headers\* -type d | wc -l` ]
+		then
+			for fn in `cat ${ROOTFS_DIR}/usr/src/linux-headers*/include/config/kernel.release`
+			do
+				export DKMS_VERSIONS="${DKMS_VERSIONS} -k ${fn}"
+			done
+		fi 
+		log "====> Kernel Version: '${DKMS_VERSIONS}'"
+	fi
+}
+
+# shellcheck disable=SC2119
 run_sub_stage()
 {
 	log "Begin ${SUB_STAGE_DIR}"
@@ -20,6 +36,7 @@ EOF
 			log "Begin ${SUB_STAGE_DIR}/${i}-packages-nr"
 			PACKAGES="$(sed -f "${SCRIPT_DIR}/remove-comments.sed" < "${i}-packages-nr")"
 			if [ -n "$PACKAGES" ]; then
+				check_kernel_version
 				on_chroot << EOF
 apt-get -o Acquire::Retries=3 install --no-install-recommends -y $PACKAGES
 EOF
@@ -30,6 +47,7 @@ EOF
 			log "Begin ${SUB_STAGE_DIR}/${i}-packages"
 			PACKAGES="$(sed -f "${SCRIPT_DIR}/remove-comments.sed" < "${i}-packages")"
 			if [ -n "$PACKAGES" ]; then
+				check_kernel_version 
 				on_chroot << EOF
 apt-get -o Acquire::Retries=3 install -y $PACKAGES
 EOF
