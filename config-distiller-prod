@@ -28,7 +28,7 @@ KEYBOARD_LAYOUT='English (US)'
 WPA_COUNTRY='US'
 
 # Hostname for the device
-TARGET_HOSTNAME='distiller-prod'
+TARGET_HOSTNAME='distiller-pipi'
 
 # Deployment settings
 DEPLOY_COMPRESSION='xz'

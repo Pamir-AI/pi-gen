@@ -24,12 +24,6 @@ dpkg -i /tmp/distiller-debs/pamir-ai-soundcard-dkms_*.deb || true
 echo "Installing distiller-cm5-sdk..."
 dpkg -i /tmp/distiller-debs/distiller-cm5-sdk_*.deb || true
 
-# echo "Installing distiller-cm5-services..."
-# dpkg -i /tmp/distiller-debs/distiller-cm5-services_*.deb || true
-
-# echo "Installing distiller-mcp-hub (depends on distiller-cm5-sdk)..."
-# dpkg -i /tmp/distiller-debs/distiller-mcp-hub_*.deb || true
-
 # Fix any remaining dependency issues
 apt-get -f install -y
 
