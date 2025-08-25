@@ -34,3 +34,6 @@
 +# Disable HDMI output and blank the screen
 +dtoverlay=disable-hdmi
 +hdmi_blanking=1
++
++# Enable OV5647 Camera
++dtoverlay=ov5647
