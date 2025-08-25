@@ -22,6 +22,9 @@ libasound2-plugins
 libsndfile1-dev
 portaudio19-dev
 
+# Camera
+rpicam-apps
+
 # Audio system
 pipewire
 pipewire-alsa
