@@ -7,7 +7,6 @@ nodejs
 npm
 tmux
 lsof
-iptables
 python3-paho-mqtt
 jq
 curl
