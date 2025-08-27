@@ -47,7 +47,4 @@ DISTILLER_PI_GEN_VERSION=${IMG_NAME}
 DISTILLER_INSTALL_METHOD=deb_packages
 EOF
 
-# depmod to ensure kernel modules are updated
-sudo depmod -a
-
 echo "Distiller CM5 platform configuration completed successfully" 
