@@ -1,10 +1,9 @@
 --- stage2.orig/rootfs/boot/firmware/config.txt
 +++ stage2/rootfs/boot/firmware/config.txt
-@@ -55,3 +55,33 @@ dtoverlay=pamir-ai-sam
- dtoverlay=pamir-ai-soundcard
- dtparam=i2c_arm=on
- dtparam=i2s=on
-+
+@@ -49,3 +49,32 @@ otg_mode=1
+ dtoverlay=dwc2,dr_mode=host
+ 
+ [all]
 +# Enable eink display on SPI0
 +dtoverlay=spi0-1cs,cs0_pin=8
 +
