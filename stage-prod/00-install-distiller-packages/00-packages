@@ -1,13 +1,10 @@
-# Dependencies for Distiller prod packages
-
-network-manager
-avahi-daemon
-openssh-client
-nodejs
-npm
-tmux
-lsof
-python3-paho-mqtt
-jq
-curl
-wget
+# Pamir AI packages from APT repository
+pamir-ai-sam-dkms
+pamir-ai-soundcard-dkms
+distiller-cm5-sdk
+distiller-cm5-services
+distiller-cc
+distiller-telemetry
+claude-code-web-manager
+distiller-test-harness
+toilet
