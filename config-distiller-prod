@@ -5,8 +5,8 @@
 IMG_NAME='distiller-PROD'
 PI_GEN_RELEASE='Distiller by PamirAI'
 
-# Use bookworm as base (default)
-RELEASE='bookworm'
+# Use trixie as base (default)
+RELEASE='trixie'
 
 # Enable SSH by default for development/management
 ENABLE_SSH=1
@@ -28,7 +28,7 @@ KEYBOARD_LAYOUT='English (US)'
 WPA_COUNTRY='US'
 
 # Hostname for the device
-TARGET_HOSTNAME='distiller-pipi'
+TARGET_HOSTNAME='distiller-69420'
 
 # Deployment settings
 DEPLOY_COMPRESSION='xz'
