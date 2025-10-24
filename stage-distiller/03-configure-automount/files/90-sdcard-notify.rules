@@ -1,0 +1,16 @@
+# Log SD card insertion and removal events
+# This rule logs to syslog when SD cards are inserted or removed
+# Events can be viewed with: journalctl -f | grep -i sdcard
+
+ACTION=="add", SUBSYSTEM=="block", KERNEL=="mmcblk[1-9]", ENV{DEVTYPE}=="disk", \
+  RUN+="/bin/sh -c 'logger -t sdcard -p user.info \"SD card inserted: /dev/%k\"'"
+
+ACTION=="remove", SUBSYSTEM=="block", KERNEL=="mmcblk[1-9]", ENV{DEVTYPE}=="disk", \
+  RUN+="/bin/sh -c 'logger -t sdcard -p user.info \"SD card removed: /dev/%k\"'"
+
+ACTION=="add", SUBSYSTEM=="block", KERNEL=="sd[a-z]", ENV{DEVTYPE}=="disk", ENV{ID_BUS}=="usb", \
+  ATTRS{product}=="*Card*Reader*", \
+  RUN+="/bin/sh -c 'logger -t sdcard -p user.info \"USB card reader inserted: /dev/%k\"'"
+
+ACTION=="remove", SUBSYSTEM=="block", KERNEL=="sd[a-z]", ENV{DEVTYPE}=="disk", ENV{ID_BUS}=="usb", \
+  RUN+="/bin/sh -c 'logger -t sdcard -p user.info \"USB card reader removed: /dev/%k\"'"

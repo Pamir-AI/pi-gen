@@ -1,10 +1,10 @@
 # Pamir AI packages from APT repository
 pamir-ai-sam-dkms
 pamir-ai-soundcard-dkms
-distiller-cm5-sdk
-distiller-cm5-services
-distiller-cc
+python3-dev
+distiller-sdk
+distiller-services
+#distiller-cc
 distiller-telemetry
 claude-code-web-manager
-distiller-test-harness
 distiller-update

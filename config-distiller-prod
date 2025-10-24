@@ -46,3 +46,5 @@ STAGE_LIST="stage0 stage1 stage2 stage-distiller stage-prod"
 
 # Optional: Set APT proxy if available
 # APT_PROXY="http://192.168.1.100:3142" 
+
+DISTILLER_PLATFORM=cm5
