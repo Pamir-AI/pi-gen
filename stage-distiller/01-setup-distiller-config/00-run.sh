@@ -31,24 +31,4 @@ fi
 EOF
 fi
 
-# Set up logrotate for distiller logs
-cat > "${ROOTFS_DIR}/etc/logrotate.d/distiller" << 'EOF'
-/var/log/distiller/*.log {
-    daily
-    missingok
-    rotate 7
-    compress
-    delaycompress
-    create 644 distiller distiller
-}
-EOF
-
-# Create distiller platform info file
-cat > "${ROOTFS_DIR}/etc/distiller-platform-info" << EOF
-DISTILLER_PLATFORM_VERSION=2.0.0
-DISTILLER_INSTALL_DATE=$(date)
-DISTILLER_PI_GEN_VERSION=${IMG_NAME}
-DISTILLER_INSTALL_METHOD=apt
-EOF
-
-echo "Distiller CM5 platform configuration completed successfully"
+echo "Distiller platform welcome message configured successfully"

@@ -1,9 +1,0 @@
---- stage2.orig/rootfs/boot/firmware/config.txt
-+++ stage2/rootfs/boot/firmware/config.txt
-@@ -89,3 +89,6 @@ over_voltage=-3
- # Disable HDMI output and blank the screen
- dtoverlay=disable-hdmi
- hdmi_blanking=1
-+
-+# Enable OV5647 camera
-+dtoverlay=ov5647
