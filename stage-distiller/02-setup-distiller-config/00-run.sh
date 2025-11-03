@@ -45,10 +45,10 @@ EOF
 
 # Create distiller platform info file
 cat > "${ROOTFS_DIR}/etc/distiller-platform-info" << EOF
-DISTILLER_PLATFORM_VERSION=1.0.0
+DISTILLER_PLATFORM_VERSION=2.0.0
 DISTILLER_INSTALL_DATE=$(date)
 DISTILLER_PI_GEN_VERSION=${IMG_NAME}
 DISTILLER_INSTALL_METHOD=apt
 EOF
 
-echo "Distiller CM5 platform configuration completed successfully" 
+echo "Distiller CM5 platform configuration completed successfully"
