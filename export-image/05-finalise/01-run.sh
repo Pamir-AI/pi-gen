@@ -50,6 +50,8 @@ rm -f "${ROOTFS_DIR}/etc/subgid-"
 rm -f "${ROOTFS_DIR}"/var/cache/debconf/*-old
 rm -f "${ROOTFS_DIR}"/var/lib/dpkg/*-old
 
+find "${ROOTFS_DIR}/var/cache/apt/archives/" -type f -delete
+
 rm -f "${ROOTFS_DIR}"/usr/share/icons/*/icon-theme.cache
 
 rm -f "${ROOTFS_DIR}/var/lib/dbus/machine-id"
