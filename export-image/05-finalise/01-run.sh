@@ -52,6 +52,19 @@ rm -f "${ROOTFS_DIR}"/var/lib/dpkg/*-old
 
 find "${ROOTFS_DIR}/var/cache/apt/archives/" -type f -delete
 
+on_chroot << EOF
+apt-get clean
+EOF
+find "${ROOTFS_DIR}/var/lib/apt/lists/" -type f -delete
+
+rm -rf "${ROOTFS_DIR}/root/.cache/code-server"
+rm -rf "${ROOTFS_DIR}/root/.npm"
+rm -rf "${ROOTFS_DIR}"/home/*/.npm/_cacache
+rm -rf "${ROOTFS_DIR}"/home/*/.npm/_logs
+rm -rf "${ROOTFS_DIR}"/home/*/.nvm/test
+rm -rf "${ROOTFS_DIR}/root/.local/share/claude"
+rm -rf "${ROOTFS_DIR}/root/.claude/downloads"
+
 rm -f "${ROOTFS_DIR}"/usr/share/icons/*/icon-theme.cache
 
 rm -f "${ROOTFS_DIR}/var/lib/dbus/machine-id"
