@@ -15,6 +15,7 @@ EXTENSIONS=(
 
 TARGET_PLATFORM="linux-arm64"
 TEMP_DIR=$(mktemp -d)
+chmod 755 "$TEMP_DIR"
 trap "rm -rf $TEMP_DIR" EXIT
 
 download_and_install() {
@@ -79,5 +80,11 @@ for ext in "${EXTENSIONS[@]}"; do
         download_and_install "$namespace" "$name" "$platform" "$strict" || true
     fi
 done
+
+# Kill any lingering code-server/node processes to allow clean unmount
+echo "Cleaning up lingering processes..."
+pkill -u "${FIRST_USER_NAME}" -f "code-server" 2>/dev/null || true
+pkill -u "${FIRST_USER_NAME}" -f "node" 2>/dev/null || true
+sleep 1
 
 echo "VS Code extension installation complete"
