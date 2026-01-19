@@ -34,17 +34,16 @@ chmod 644 /etc/profile.d/nvm.sh
 
 echo "NVM and Node.js $NODE_VERSION installed successfully"
 
-# Install Claude Code CLI
-echo "Installing Claude Code CLI..."
+# Install Claude Code CLI for target user
+echo "Installing Claude Code CLI for $TARGET_USER..."
+su - "$TARGET_USER" -c 'curl -fsSL https://claude.ai/install.sh | bash'
 
-# Source NVM to make npm available
-export NVM_DIR="/home/$TARGET_USER/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-
-# Install Claude using official method
-curl -fsSL https://claude.ai/install.sh | bash
-echo "Claude Code CLI installed successfully"
-[ -f "$HOME/.local/bin/claude" ] && cp "$HOME/.local/bin/claude" /usr/local/bin/claude
+# Verify installation
+if su - "$TARGET_USER" -c 'command -v claude' &>/dev/null; then
+    echo "Claude Code CLI installed successfully"
+else
+    echo "Warning: Claude Code CLI verification failed"
+fi
 
 # Install code-server
 echo "Installing code-server..."
