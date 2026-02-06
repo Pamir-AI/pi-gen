@@ -7,3 +7,8 @@ if [ -d /tmp/local-debs ] && ls /tmp/local-debs/*.deb >/dev/null 2>&1; then
     rm -rf /tmp/local-debs
     echo "Local packages installed successfully"
 fi
+
+apt purge claude-code-web-manager -y || true
+apt purge distiller-watchdog -y || true
+apt purge distiller-telemetry -y || true
+rm -rf ~/projects/*
