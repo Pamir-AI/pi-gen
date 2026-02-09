@@ -31,4 +31,9 @@ fi
 EOF
 fi
 
+# Copy welcome image to distiller user home directory
+install -m 644 -o 1000 -g 1000 \
+    "$(dirname "$0")/../files/welcome.png" \
+    "${ROOTFS_DIR}/home/${FIRST_USER_NAME}/welcome.png"
+
 echo "Distiller platform welcome message configured successfully"
