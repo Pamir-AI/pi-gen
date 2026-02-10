@@ -2,4 +2,6 @@ output/
 work/
 deploy/
 apt-cacher-ng/
+archives/
+build-logs/
 .git/objects/*

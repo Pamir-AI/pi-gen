@@ -216,12 +216,17 @@ EOF
 # Function to cleanup temporary files
 cleanup() {
     print_status "Cleaning up temporary files..."
-    rm -f "${DIR}"/.config-temp-*
-    
+
     if [[ ${PRESERVE_CONTAINER} -eq 0 ]] && [[ "${BUILD_METHOD}" == "docker" ]]; then
-        # Clean up Docker containers if not preserving
+        # Remove container BEFORE deleting temp configs, since the container
+        # holds a bind mount reference to the temp config file. If we delete
+        # the file first, docker cp (and future container operations) will fail
+        # with "not a directory" errors.
         docker rm -f pigen_work 2>/dev/null || true
     fi
+
+    # Use rm -rf to handle cases where stale temp configs became directories
+    rm -rf "${DIR}"/.config-temp-*
 }
 
 # Function to run the build
@@ -446,7 +451,11 @@ main() {
     
     # Set trap for cleanup
     trap cleanup EXIT
-    
+
+    # Clean up stale temp configs from previous runs (may be dirs if Docker
+    # recreated them after the original file was deleted)
+    rm -rf "${DIR}"/.config-temp-* 2>/dev/null || true
+
     # Check dependencies if requested
     if [[ ${CHECK_DEPS} -eq 1 ]]; then
         if ! check_dependencies; then
